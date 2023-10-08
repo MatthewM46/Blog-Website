@@ -1,5 +1,5 @@
 
-# Create Personal Account
+# Create an Account
 
 **Goal In Context:** Personal user wishes to create an account
 
@@ -17,11 +17,10 @@
 
 **Main Flow:**
 1. User selects Create Account
-2. User selects create personal account
-3. User fills in create account prompts with personal information/credentials
-4. Credentials are checked in the database
-5. New account is created and stored in database
-6. Confirmation email is sent to user       
+2. User fills in create account prompts with personal information/credentials
+3. Credentials are checked in the database
+4. New account is created and stored in database
+5. Confirmation email is sent to user       
 
 **Extensions:**
 3.1 Account with email already exists error, account not created
@@ -42,13 +41,15 @@
 
 **Trigger:** User asks system to create account
 
+**Base Usecase**: Create an Account
+
 **Main Flow:**
 1. User selects Create Account
-2. User selects create business account
-3. User fills in create account prompts with business information/credentials
+2. **User selects create business account**
+3. User fills in create account prompts with **business information**/credentials
 4. Credentials are checked in database
-5. Admin reviews the information/credentials
-6. Admin signs off on business account
+5. **Admin reviews the information/credentials**
+6. **Admin signs off on business account**
 7. New account is created and stored in database
 8. Confirmation email is sent to user
 
