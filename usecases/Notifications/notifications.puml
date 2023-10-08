@@ -1,0 +1,26 @@
+@startuml
+
+actor "User" as user
+actor "Users Database" as userDb
+actor "Notification Preferences Database" as notifDb
+
+package "MAJAM" {
+	usecase "Search for Other Accounts" as Search
+	usecase "Follow/Unfollow Account" as Follow
+	usecase "Set Notification Preferences" as SetNotifPref
+	usecase "Receive Notification" as RecvNotif
+}
+
+user -- Search
+Search -- userDb
+
+user -- Follow
+Follow -- userDb
+
+user -- SetNotifPref
+SetNotifPref -- notifDb
+
+user -- RecvNotif
+RecvNotif -- notifDb
+
+@enduml

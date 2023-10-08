@@ -1,0 +1,30 @@
+@startuml
+
+actor "User" as user
+actor "Administrator" as admin
+actor "Credentials Database" as creddb
+
+package MAJAM {
+  usecase "Create an Account" as CreateAccount
+  usecase "Create a Business Account" as CreateBizAccount
+  usecase "Update Account Credentials" as UpdateCred
+  usecase "Log Into Account" as Login
+  usecase "Recover Password" as RecoverPass
+}
+
+user -- CreateAccount
+CreateAccount -- creddb
+
+CreateBizAccount -|> CreateAccount
+CreateBizAccount -- admin
+
+user -- UpdateCred
+UpdateCred -- creddb
+
+user -- Login
+Login -- creddb
+
+user -- RecoverPass
+RecoverPass -- creddb
+
+@enduml
