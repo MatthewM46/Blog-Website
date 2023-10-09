@@ -1,9 +1,15 @@
+PUML_PATHS  := $(shell find . -type f -name "*.puml")
+PNG_PATHS := $(patsubst %.puml,%.png,$(PUML_PATHS))
 
-PUML_OUT = "pumlout"
-PWD = $(shell pwd)
+all: $(PNG_PATHS)
 
-puml:
-	plantuml -o $(PWD)/$(PUML_OUT) usecases/**
+print:
+	echo $(PNG_PATHS)
+
+%.png: %.puml
+	plantuml $<
 
 clean:
-	rm -r $(PUML_OUT)
+	rm $(PNG_PATHS)
+
+.PHONY: all clean

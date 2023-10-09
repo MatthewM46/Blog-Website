@@ -1,0 +1,38 @@
+@startuml
+
+participant "User" as user
+participant "Account Service" as accserv
+participant "Credentials Database" as creddb
+
+user -> accserv: Initiate "Forgot Password" flow
+activate accserv
+user -> accserv: Transmits email address
+
+opt email is associated with existing account
+
+accserv -> user: Send password reset email
+
+deactivate accserv
+
+user -> accserv: Clicks link in email
+
+activate accserv
+user -> accserv: Transmits new password
+
+accserv -> creddb: Update credential
+
+alt credential changed successfully
+
+accserv --> user: Confirm change
+
+else
+
+accserv --> user: Inform of error
+
+end
+
+deactivate accserv
+
+end
+
+@enduml

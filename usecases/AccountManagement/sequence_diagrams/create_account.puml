@@ -1,0 +1,25 @@
+@startuml
+
+participant "User" as user
+participant "Account Service" as accserv
+participant "Credentials Database" as creddb
+
+user -> accserv: Transmit new account details
+
+activate accserv
+
+accserv -> creddb: Query for existing accounts
+
+alt "account already exists"
+
+accserv --> user: Inform of error
+
+else
+
+accserv -> creddb: Create new account
+accserv --> user: Confirm account creation
+accserv -> user: Send email confirmation
+
+end
+
+@enduml

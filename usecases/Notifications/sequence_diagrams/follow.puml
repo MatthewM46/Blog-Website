@@ -1,0 +1,17 @@
+@startuml
+
+participant "User" as user
+participant "Notification Service" as notserv
+participant "Notification Database" as notdb
+
+user -> notserv: Communicate intention to follow/unfollow
+
+activate notserv
+
+notserv -> notdb: Register change
+
+notserv --> user: Confirm change
+
+deactivate notserv
+
+@enduml

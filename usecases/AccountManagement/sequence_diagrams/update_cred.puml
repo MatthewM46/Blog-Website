@@ -1,0 +1,30 @@
+@startuml
+
+participant "User" as user
+participant "Account Service" as accserv
+participant "Credentials Database" as creddb
+
+user -> accserv: Query for existing account details
+activate accserv
+accserv -> creddb
+creddb --> accserv
+accserv --> user
+deactivate accserv
+
+opt user wants to make changes
+
+user -> accserv: Transmit requested changes
+activate accserv
+accserv -> creddb
+
+alt changes committed successfully
+accserv --> user: Confirm changes
+else
+accserv --> user: Inform of error
+end
+
+deactivate accserv
+
+end
+
+@enduml

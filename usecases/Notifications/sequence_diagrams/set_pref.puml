@@ -1,0 +1,31 @@
+@startuml
+
+participant "User" as user
+participant "Notification Service" as notserv
+participant "Notification Database" as notdb
+
+user -> notserv: Request current settings
+activate notserv
+
+notserv -> notdb
+notdb --> notserv
+
+notserv --> user
+
+deactivate notserv
+
+opt user wishes to make changes
+
+user -> notserv: Communicate updated preferences
+
+activate notserv
+
+notserv -> notdb: Update user preferences
+
+notserv --> user: Confirm changes
+
+deactivate notserv
+
+end
+
+@enduml

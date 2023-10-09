@@ -1,0 +1,23 @@
+@startuml
+
+participant "Subscriber" as user
+participant "Event Origin" as postserv
+participant "Notification Service" as notserv
+participant "Notifications Database" as notdb
+
+postserv -> notserv: Details of event
+
+activate notserv
+
+notserv -> notdb: Query for subscribers of event
+notdb --> notserv
+
+loop for each subscriber
+
+notserv -> user: Send notification
+
+end
+
+deactivate notserv
+
+@enduml

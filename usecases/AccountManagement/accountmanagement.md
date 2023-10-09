@@ -1,5 +1,29 @@
+Account Management Usecases
+===========================
 
-# Create an Account
+![Usecase Diagram](accountmanagement.png)
+
+<!-- TOC -->
+  * [Create an Account](#create-an-account)
+    * [Description](#description)
+    * [Sequence Diagram](#sequence-diagram)
+  * [Create Business Account](#create-business-account)
+    * [Description](#description-1)
+    * [Sequence Diagram](#sequence-diagram-1)
+  * [Update Account Credentials](#update-account-credentials)
+    * [Description](#description-2)
+    * [Sequence Diagram](#sequence-diagram-2)
+  * [Login](#login)
+    * [Description](#description-3)
+    * [Sequence Diagram](#sequence-diagram-3)
+  * [Recover Password](#recover-password)
+    * [Description](#description-4)
+    * [Sequence Diagram](#sequence-diagram-4)
+<!-- TOC -->
+
+## Create an Account
+
+### Description
 
 **Goal In Context:** Personal user wishes to create an account
 
@@ -25,9 +49,16 @@
 **Extensions:**
 3.1 Account with email already exists error, account not created
 
-# Create Business Account
+### Sequence Diagram
 
-**Goal In Context:**  Business user wishes to create account
+![Sequence Diagram](sequence_diagrams/create_account.png)
+
+## Create Business Account
+
+### Description
+
+**Goal In Context:**  Business user wishes to create
+account
 
 **Pre-condition:**  User not registered and owns a business
 
@@ -58,7 +89,13 @@
 3.2 Business licence already in use error, account not created
 5.1 Admin does not accept business account, account not created
 
-# Update Account Credentials
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/create_biz_account.png)
+
+## Update Account Credentials
+
+### Description
 
 **Goal In Context:** User wishes to change account credentials
 
@@ -87,7 +124,13 @@
 5.1 User selects cancel, credentials not updated
 5.2 User times out, credentials not updated
 
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/update_cred.png)
+
 ## Login
+
+### Description
 
 **Goal In Context:** User logs in
 
@@ -112,7 +155,13 @@
 **Extensions:**
 3.1 Incorrect email or password error, user not logged in
 
-# Recover Password
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/login.png)
+
+## Recover Password
+
+### Description
 
 **Goal In Context:** User wishes to change their password
 
@@ -143,3 +192,7 @@
 6.1 Users passwords do not match, password not updated
 6.2 User selects cancel, password not updated
 6.3 User times out, password not updated
+
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/recover.png)

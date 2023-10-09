@@ -1,4 +1,27 @@
-# User Searches for Other Accounts
+
+Notifications Usecases
+======================
+
+![Notifications Usecase Diagram](notifications.png)
+
+<!-- TOC -->
+  * [User Searches for Other Accounts](#user-searches-for-other-accounts)
+    * [Description](#description)
+    * [Sequence Diagram](#sequence-diagram)
+  * [User Follows/Unfollows Account](#user-followsunfollows-account)
+    * [Description](#description-1)
+    * [Sequence Diagram](#sequence-diagram-1)
+  * [User Sets Their Notification Preferences](#user-sets-their-notification-preferences)
+    * [Description](#description-2)
+    * [Sequence Diagram](#sequence-diagram-2)
+  * [User Receives a Notification From a Followed Account](#user-receives-a-notification-from-a-followed-account)
+    * [Description](#description-3)
+    * [Sequence Diagram](#sequence-diagram-3)
+<!-- TOC -->
+
+## User Searches for Other Accounts
+
+### Description
 
 **Goal in Context**: An existing user searches for another user to view and/or subscribe to their posts.
 
@@ -23,7 +46,13 @@
 
 Step 2: If there are no results, an appropriate error message is displayed to the user.
 
-# User Follows/Unfollows Account
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/follow.png)
+
+## User Follows/Unfollows Account
+
+### Description
 
 **Goal in context**: An existing user wishes to follow/unfollow another account in order to receive updates when that user posts new things.
 
@@ -41,7 +70,13 @@ Step 2: If there are no results, an appropriate error message is displayed to th
 1. The user, on the page of the other user they wish to follow, indicates their intention by clicking a *Follow* button or other appropriately named button.
 2. The system communicates with the *Users Database* to register the follow relationship.
 
-# User Sets Their Notification Preferences
+### Sequence Diagram
+
+![Sequence Diagram](sequence_diagrams/follow.png)
+
+## User Sets Their Notification Preferences
+
+### Description
 
 **Goal in context**: A user decides what they want to be notified about, and by what means.
 
@@ -66,7 +101,13 @@ Step 2: If there are no results, an appropriate error message is displayed to th
 
 Step 3: The user may choose not to confirm their changes, they may click a *Cancel* button or navigate away from the page. In this case, they have simply confirmed their existing notification settings.
 
-# User Receives a Notification From a Followed Account
+### Sequence Diagram
+
+![Sequence diagram](sequence_diagrams/set_pref.png)
+
+## User Receives a Notification From a Followed Account
+
+### Description
 
 **Goal in context**: Whereas a user has indicated they wish to receive notifications for particular events, the system delivers the notifications to them in the way they prefer.
 
@@ -86,3 +127,7 @@ Step 3: The user may choose not to confirm their changes, they may click a *Canc
 1. An event occurs for which a user may be notified
 2. The *Notification Preferences Database* is consulted, to see if the users who can see this event want to be notified of the event, and how they want to be notified
 3. The system sends a notification to the user according to their preference, if applicable.
+
+### Sequence Diagram
+
+![Sequence Diagram for the usecase "User Receives a Notification from a Followed Account"](sequence_diagrams/recv_notification.png)

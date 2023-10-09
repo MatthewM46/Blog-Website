@@ -1,0 +1,24 @@
+@startuml
+
+participant "User" as user
+participant "Account Service" as accserv
+participant "Credentials Database" as creddb
+
+user -> accserv: Transmit credentials
+activate accserv
+
+accserv -> creddb: Check credentials
+
+alt credentials are correct
+
+accserv --> user: Login, transmit token
+
+else
+
+accserv --> user: Inform of error
+
+end
+
+deactivate accserv
+
+@enduml

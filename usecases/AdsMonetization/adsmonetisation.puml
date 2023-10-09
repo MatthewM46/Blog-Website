@@ -1,0 +1,24 @@
+
+@startuml
+
+actor "System Administrator" as admin
+actor "Advertiser" as advertiser
+actor "Advertising Database" as addb
+
+package "MAJAM" {
+	usecase "Post Advertisement" as postad
+	usecase "Edit Existing Ad" as editad
+	usecase "Remove Ad on Timeout" as timeout
+}
+
+admin -- postad
+advertiser -- postad
+addb -- postad
+
+advertiser -- editad
+addb -- editad
+
+admin -- timeout
+addb -- timeout
+
+@enduml
