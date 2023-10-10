@@ -1,7 +1,24 @@
 
-![Ads/Monetization Usecase Diagram](diagrams/adsmonetisation.png)
+Ad/Monetization Usecases
+========================
 
-# Post Advertisement
+![Ads/Monetization Usecase Diagram](diagrams/adsmonetization.png)
+
+<!-- TOC -->
+  * [Post Advertisement](#post-advertisement)
+    * [Description](#description)
+    * [Sequence Diagram](#sequence-diagram)
+  * [Edit Existing Ad](#edit-existing-ad)
+    * [Description](#description-1)
+    * [Sequence Diagram](#sequence-diagram-1)
+  * [Remove the Ad on Timeout](#remove-the-ad-on-timeout)
+    * [Description](#description-2)
+    * [Sequence Diagram](#sequence-diagram-2)
+<!-- TOC -->
+
+## Post Advertisement
+
+### Description
 
 **Goal in context**: The advertising business will have their advertisements shown on the website for a fee.
 
@@ -21,7 +38,9 @@ account.
 
 1. The advertiser can view existing advertisements or create a new
    advertisement. All part of the view advertisement page. The ads are all
-   in the advertisement database
+   in the advertisement database ==TODO: This isn't really a step. In the
+   sequence diagram I drafted something, so if you think it's appropriate, 
+   would you like to try update the steps here?==
 2. The system prompts the advertiser for payment if they are creating a
    new advertisement.
 3. The advertisement is posted on the website by the administrator
@@ -37,7 +56,13 @@ account.
 The advertiser can just view the ad that they have instead of creating an
 ad.
 
-# Edit Existing Ad
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/postad.png)
+
+## Edit Existing Ad
+
+### Description
 
 **Goal in Context**: The advertiser changes their ad on the website.
 They can either change the ad image or the shape of the image or the
@@ -73,7 +98,13 @@ account.
 advertisement on the edit page and opt for no
 changes to the ad.
 
-# Remove the Ad on Timeout
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/editad.png)
+
+## Remove the Ad on Timeout
+
+### Description
 
 **Goal in context**: The advertisement needs to be taken down by the
 advertisement after the allotted time.
@@ -94,3 +125,7 @@ advertisement after the allotted time.
 
 **Issues**:
 I'm not sure how this would be implemented.
+
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/timeout.png)

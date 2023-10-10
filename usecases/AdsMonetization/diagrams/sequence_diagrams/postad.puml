@@ -1,0 +1,32 @@
+@startuml
+
+participant "Advertiser" as advertiser
+participant "Advertising Service" as adserv
+participant "Administrator" as admin
+participant "Advertising Database" as addb
+
+advertiser -> adserv: Upload ad information
+
+activate adserv
+
+adserv -> advertiser: Prompt for payment
+advertiser --> adserv: Payment
+adserv -> addb: Store ad information
+
+adserv -> admin: Notify of pending ad
+deactivate adserv
+
+activate admin
+opt admin deems ad ok
+	admin -> adserv: Activate ad
+end
+
+note right
+	TODO: does the advertiser
+	find out somehow if their
+	ad is rejected?
+end note
+
+deactivate admin
+
+@enduml

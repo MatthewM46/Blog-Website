@@ -1,0 +1,14 @@
+@startuml
+
+participant "Administrator" as admin
+participant "Advertising Service" as adserv
+participant "Advertising Database" as addb
+
+adserv -> admin: Notify of expired ad
+
+admin -> adserv: Command to remove ad
+activate adserv
+adserv -> addb: Remove ad info
+deactivate adserv
+
+@enduml

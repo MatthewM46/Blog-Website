@@ -1,0 +1,24 @@
+@startuml
+
+participant "Advertiser" as advertiser
+participant "Advertising Service" as adserv
+participant "Advertising Database" as addb
+
+advertiser -> adserv: Request existing ads
+activate adserv
+adserv --> advertiser:
+deactivate adserv
+
+advertiser -> adserv: Update ad details
+activate adserv
+
+opt time extension requires payment
+	adserv -> advertiser: Prompt for payment
+	advertiser --> adserv: Payment
+end
+
+adserv -> addb: Store updated info
+
+deactivate adserv
+
+@enduml
