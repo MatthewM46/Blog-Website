@@ -36,14 +36,11 @@ account.
 
 **Main Flow**:
 
-1. The advertiser can view existing advertisements or create a new
-   advertisement. All part of the view advertisement page. The ads are all
-   in the advertisement database ==TODO: This isn't really a step. In the
-   sequence diagram I drafted something, so if you think it's appropriate, 
-   would you like to try update the steps here?==
-2. The system prompts the advertiser for payment if they are creating a
+1. The advertiser goes to the view advertisement page. They can click on create advertisement to go to the create advertisement page.
+2. The advertisement fills in details of the advertisement on the create advertisement page and presses create advertisement button.
+3. The system prompts the advertiser for payment if they are creating a
    new advertisement.
-3. The advertisement is posted on the website by the administrator
+4. The advertisement is posted on the website by the administrator
 
 **Issues**:
 
