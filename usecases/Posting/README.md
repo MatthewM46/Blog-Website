@@ -143,3 +143,8 @@ and all fields are reset.
 **Extensions**:
  * 1.1 User may also cancel their search, in which nothing is being searched/accessed;
  * 5.1 If no related posts are found, the Search Engine will return the appropriate error message.
+
+### Sequence Diagram
+
+![Sequence Diagram](https://github.com/uvic-teach/project-m1-team3/assets/113219645/27bcaa5c-3ce9-4b53-9c80-7b8a8db567a0)
+
