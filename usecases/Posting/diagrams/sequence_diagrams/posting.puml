@@ -4,6 +4,7 @@ participant "User" as user
 participant "Post Service" as postserv
 participant "Automoderator" as automod
 participant "Notification Service" as notserv
+participant "Post Database" as postdb
 
 user -> postserv: Submit post
 
@@ -15,19 +16,11 @@ activate automod
 automod --> postserv
 deactivate automod
 
-postserv -> notserv: Transmit automod decision
+
+postserv -> postdb: Transmit new post details
+postserv -> notserv: Inform of new post event
 
 deactivate postserv
-activate notserv
 
-note right
-TODO: at what point
-is the post stored
-in some database?
-end note
-
-notserv -> user: Inform user of automod decision
-
-deactivate notserv
 
 @enduml
