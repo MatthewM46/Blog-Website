@@ -4,6 +4,7 @@ participant "User" as user
 participant "Post Service" as postserv
 participant "Automoderator" as automod
 participant "Notification Service" as notserv
+participant "Post Database" as postdb
 
 user -> postserv: Transmit new comment
 activate postserv
@@ -13,19 +14,11 @@ activate automod
 automod --> postserv
 deactivate automod
 
-postserv -> notserv: Transmit automod decision
+postserv -> postdb: Transmit new comment details
+
+
+postserv -> notserv: Inform of new comment event
 
 deactivate postserv
-activate notserv
-
-note right
-	TODO: at what point
-	is the comment stored
-	in some database?
-end note
-
-notserv -> user: Inform user of automod decision
-
-deactivate notserv
 
 @enduml
