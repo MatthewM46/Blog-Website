@@ -9,7 +9,7 @@ print:
 	echo $(PNG_PATHS)
 
 %.png: %.puml
-	java -jar $(PATH_TO_PUML) $<
+	java -jar -Djava.awt.headless=true $(PATH_TO_PUML) $<
 
 clean:
 	rm $(PNG_PATHS)
