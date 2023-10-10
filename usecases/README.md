@@ -1,10 +1,10 @@
 Usecases
 ========
 
-[Account Management](AccountManagement/accountmanagement.md)
+[Account Management](AccountManagement/README.md)
 
-[Ads and Monetization](AdsMonetization/adsmonetization.md)
+[Ads and Monetization](AdsMonetization/README.md)
 
-[Notifications](Notifications/notifications.md)
+[Notifications](Notifications/README.md)
 
-[Posting](Posting/posting.md)
+[Posting](Posting/README.md)
