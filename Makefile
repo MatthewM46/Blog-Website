@@ -1,3 +1,5 @@
+PATH_TO_PUML := /usr/local/bin/plantuml.jar
+
 PUML_PATHS  := $(shell find . -type f -name "*.puml")
 PNG_PATHS := $(patsubst %.puml,%.png,$(PUML_PATHS))
 
@@ -7,7 +9,7 @@ print:
 	echo $(PNG_PATHS)
 
 %.png: %.puml
-	plantuml $<
+	java -jar $(PATH_TO_PUML) $<
 
 clean:
 	rm $(PNG_PATHS)
