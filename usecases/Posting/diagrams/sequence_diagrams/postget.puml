@@ -1,0 +1,19 @@
+@startuml
+
+participant "User" as user
+participant "Search Engine" as searcheng
+participant "Post Database" as postdat
+
+user -> searcheng: Transmit new search query
+activate searcheng
+
+searcheng -> postdat: Transmit request for relevant posts
+activate postdat
+postdat --> searcheng
+deactivate postdat
+
+searcheng -> user: Return search results
+
+deactivate searcheng
+
+@enduml
