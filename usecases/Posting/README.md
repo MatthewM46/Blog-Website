@@ -129,7 +129,7 @@ and all fields are reset.
 
 **Primary Actors**: User
 
-**Secondary Actors**: User, Search Engine, Post Database
+**Secondary Actors**: Search Engine, Post Database
 
 **Trigger**: User indicates to the system that they want browse posts
 
