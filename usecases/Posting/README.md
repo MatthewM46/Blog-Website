@@ -2,6 +2,8 @@
 Posting Usecases
 ================
 
+![Usecase Diagram](diagrams/posting.png)
+
 ## Create Post
 
 ### Description
@@ -32,6 +34,10 @@ Posting Usecases
 
 4.1 User may cancel creating a post, in which nothing is sent out and all 
 fields are reset.
+
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/posting.png)
 
 ## Create Comment
 
@@ -65,6 +71,10 @@ comment is logged in
 
 3.1 User may cancel creating a comment, in which nothing is sent out and 
 all fields are reset
+
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/commenting.png)
 
 ## Reply to Comment
 
@@ -105,3 +115,7 @@ and all fields are reset.
 
 6.1  If the Poster User and Commenter User are the same user, then just 
 one notification is sent to them.
+
+### Sequence Diagram
+
+![Sequence Diagram](diagrams/sequence_diagrams/commentreply.png)

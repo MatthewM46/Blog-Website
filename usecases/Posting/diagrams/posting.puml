@@ -1,0 +1,28 @@
+@startuml
+
+actor "User" as user
+actor "Post Author" as author
+actor "Automoderator" as automod
+actor "Notification System" as notsys
+
+package "MAJAM" {
+	usecase "Create Post" as CreatePost
+	usecase "Create Comment" as CreateCom
+	usecase "Reply to Comment" as ReplyCom
+}
+
+user -- CreatePost
+automod -- CreatePost
+notsys -- CreatePost
+
+user -- CreateCom
+author -- CreateCom
+automod -- CreateCom
+notsys -- CreateCom
+
+user -- ReplyCom
+author -- ReplyCom
+automod -- ReplyCom
+notsys -- ReplyCom
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+
+participant "User" as user
+participant "Post Service" as postserv
+participant "Automoderator" as automod
+participant "Notification Service" as notserv
+
+user -> postserv: Submit post
+
+activate postserv
+
+postserv -> automod: Submit for moderation
+
+activate automod
+automod --> postserv
+deactivate automod
+
+postserv -> notserv: Transmit automod decision
+
+deactivate postserv
+activate notserv
+
+note right
+TODO: at what point
+is the post stored
+in some database?
+end note
+
+notserv -> user: Inform user of automod decision
+
+deactivate notserv
+
+@enduml

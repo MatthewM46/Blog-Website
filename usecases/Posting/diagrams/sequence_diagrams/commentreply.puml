@@ -1,0 +1,45 @@
+@startuml
+
+participant "Original Comment Author" as originAuth
+participant "User" as user
+participant "Post Service" as postserv
+participant "Automoderator" as automod
+participant "Notification Service" as notserv
+
+user -> postserv: Transmit new comment
+activate postserv
+
+postserv -> automod: Submit for moderation
+activate automod
+automod --> postserv
+deactivate automod
+
+postserv -> notserv: Transmit automod decision
+
+deactivate postserv
+activate notserv
+
+note right
+	TODO: at what point
+	is the comment stored
+	in some database?
+end note
+
+notserv -> user: Inform user of automod decision
+
+opt comment was approved
+
+notserv -> user: Notify of new comment
+notserv -> originAuth: Notify of new comment
+
+note right
+	TODO: this opt doesn't exist
+	in the other sequences—should
+	this be changed or is it ok?
+end note
+
+end
+
+deactivate notserv
+
+@enduml
