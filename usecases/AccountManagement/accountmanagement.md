@@ -1,7 +1,7 @@
 Account Management Usecases
 ===========================
 
-![Usecase Diagram](accountmanagement.png)
+![Usecase Diagram](diagrams/accountmanagement.png)
 
 <!-- TOC -->
   * [Create an Account](#create-an-account)
@@ -51,7 +51,7 @@ Account Management Usecases
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/create_account.png)
+![Sequence Diagram](diagrams/sequence_diagrams/create_account.png)
 
 ## Create Business Account
 
@@ -91,7 +91,7 @@ account
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/create_biz_account.png)
+![Sequence Diagram](diagrams/sequence_diagrams/create_biz_account.png)
 
 ## Update Account Credentials
 
@@ -126,7 +126,7 @@ account
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/update_cred.png)
+![Sequence Diagram](diagrams/sequence_diagrams/update_cred.png)
 
 ## Login
 
@@ -157,7 +157,7 @@ account
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/login.png)
+![Sequence Diagram](diagrams/sequence_diagrams/login.png)
 
 ## Recover Password
 
@@ -195,4 +195,4 @@ account
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/recover.png)
+![Sequence Diagram](diagrams/sequence_diagrams/recover.png)

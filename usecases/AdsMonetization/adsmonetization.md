@@ -1,5 +1,5 @@
 
-![Ads/Monetization Usecase Diagram](adsmonetisation.png)
+![Ads/Monetization Usecase Diagram](diagrams/adsmonetisation.png)
 
 # Post Advertisement
 

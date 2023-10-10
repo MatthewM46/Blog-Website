@@ -2,7 +2,7 @@
 Notifications Usecases
 ======================
 
-![Notifications Usecase Diagram](notifications.png)
+![Notifications Usecase Diagram](diagrams/notifications.png)
 
 <!-- TOC -->
   * [User Searches for Other Accounts](#user-searches-for-other-accounts)
@@ -48,7 +48,7 @@ Step 2: If there are no results, an appropriate error message is displayed to th
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/follow.png)
+![Sequence Diagram](diagrams/sequence_diagrams/follow.png)
 
 ## User Follows/Unfollows Account
 
@@ -72,7 +72,7 @@ Step 2: If there are no results, an appropriate error message is displayed to th
 
 ### Sequence Diagram
 
-![Sequence Diagram](sequence_diagrams/follow.png)
+![Sequence Diagram](diagrams/sequence_diagrams/follow.png)
 
 ## User Sets Their Notification Preferences
 
@@ -103,7 +103,7 @@ Step 3: The user may choose not to confirm their changes, they may click a *Canc
 
 ### Sequence Diagram
 
-![Sequence diagram](sequence_diagrams/set_pref.png)
+![Sequence diagram](diagrams/sequence_diagrams/set_pref.png)
 
 ## User Receives a Notification From a Followed Account
 
@@ -130,4 +130,4 @@ Step 3: The user may choose not to confirm their changes, they may click a *Canc
 
 ### Sequence Diagram
 
-![Sequence Diagram for the usecase "User Receives a Notification from a Followed Account"](sequence_diagrams/recv_notification.png)
+![Sequence Diagram for the usecase "User Receives a Notification from a Followed Account"](diagrams/sequence_diagrams/recv_notification.png)
