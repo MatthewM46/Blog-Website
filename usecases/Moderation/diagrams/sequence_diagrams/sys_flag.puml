@@ -1,0 +1,40 @@
+@startuml
+
+participant "User" as user
+participant "Automoderator" as automod
+participant "Moderation Service" as modserv
+participant "Post Service" as postserv
+participant "Notification Service" as notserv
+participant "Database" as db
+
+automod -> modserv: Inform of objectionable post
+activate modserv
+
+modserv -> postserv: Command to hide post
+
+activate postserv
+
+postserv -> postserv: Hide post
+
+postserv --> modserv
+
+modserv -> modserv: Add post to mod queue
+
+modserv -> notserv: Command to notify user
+deactivate modserv
+
+activate notserv
+
+notserv -> user: Notification of moderation action
+
+deactivate notserv
+
+note right
+	TODO: which user
+	is notified?
+end note
+
+deactivate postserv
+
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+actor "User" as user
+actor "Notification Service" as notserv
+actor "Moderator" as mod
+
+package "MAJAM" {
+	usecase "Post is Flagged\nBy System" as PostFlagged
+	usecase "Post Review" as PostRev
+}
+
+user -- PostFlagged
+notserv -- PostFlagged
+
+user -- PostRev
+mod -- PostRev
+notserv -- PostRev
+
+@enduml

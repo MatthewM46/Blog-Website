@@ -1,0 +1,57 @@
+@startuml
+
+participant "Moderator" as mod
+participant "Moderation Service" as modserv
+participant "Notification Service" as notserv
+participant "Account Service" as accserv
+participant "User" as user
+
+mod -> modserv: Request a post from the queue
+activate modserv
+modserv --> mod: Return a post to review
+deactivate modserv
+
+note right
+	TODO: does this
+	come from some
+	database?
+end note
+
+mod -> modserv: Indicate if the post is ok or not
+activate modserv
+
+alt the post is objectionable
+
+modserv -> notserv: Command to send notification to user
+activate notserv
+notserv -> user: Notify of flagged post
+deactivate notserv
+
+modserv -> accserv: Increment removed post count
+
+activate accserv
+
+opt user has 5 or more flagged posts
+
+accserv -> accserv: Ban user
+accserv -> notserv: Command to send notification to user
+activate notserv
+notserv -> user: Notify of ban
+deactivate notserv
+
+end
+
+deactivate accserv
+
+modserv -> modserv: Command to make post visible again
+
+note right
+	TODO: send this command
+	to the post service instead?
+end note
+
+end
+
+deactivate modserv
+
+@enduml
