@@ -146,5 +146,5 @@ and all fields are reset.
 
 ### Sequence Diagram
 
-![Sequence Diagram](https://github.com/uvic-teach/project-m1-team3/assets/113219645/27bcaa5c-3ce9-4b53-9c80-7b8a8db567a0)
+![Sequence Diagram](diagrams/sequence_diagrams/postget.png)
 
