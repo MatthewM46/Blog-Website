@@ -63,7 +63,7 @@ comment is logged in
 3. User enters text content
 4. User submits comment
 5. Automoderator determines if further review is required or not
-6. Post is uploaded to database for storage, including the result from Automoderator
+6. Comment is uploaded to database for storage, including the result from Automoderator
 7. Inform notification service of the event so that appropriate notifications are sent
 
 **Extensions**:
@@ -102,7 +102,7 @@ comment is logged in
 1. User enters text content
 2. User submits reply
 3. Automoderator determines if further review is required or not
-4. Post is uploaded to database for storage, including the result from Automoderator
+4. Reply comment is uploaded to database for storage, including the result from Automoderator
 5. Inform notification service of the event so that appropriate notifications are sent
 
 **Extensions**:
