@@ -31,18 +31,18 @@ website
 
 **Primary Actors**: User, Automoderator
 
-**Secondary Actors**: Notification Service, Database
+**Secondary Actors**: Notification Service, Moderation Database
 
-==TODO: What database, and how does it participate?==
+
 
 **Trigger**: The automoderator flags a post as objectionable
 
 **Main Flow**:
 1. The post is flagged
-2. The post is added to a review queue
-3. User is notified that the post was added to review queue
+2. The post is added to a review queue and details are stored
+3. User that made post is notified that the post was added to review queue
 
-==TODO: What user is notified?==
+
 
 ### Sequence Diagram
 

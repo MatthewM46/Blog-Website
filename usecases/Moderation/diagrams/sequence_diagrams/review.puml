@@ -1,21 +1,18 @@
 @startuml
-
 participant "Moderator" as mod
 participant "Moderation Service" as modserv
 participant "Notification Service" as notserv
 participant "Account Service" as accserv
 participant "User" as user
+participant "Moderation Database" as db
+participant "Post Service" as post
 
-mod -> modserv: Request a post from the queue
-activate modserv
-modserv --> mod: Return a post to review
-deactivate modserv
+mod -> db: Request a post from the queue
+activate db
+db --> mod: Return a post to review
+deactivate db
 
-note right
-	TODO: does this
-	come from some
-	database?
-end note
+
 
 mod -> modserv: Indicate if the post is ok or not
 activate modserv
@@ -43,15 +40,10 @@ end
 
 deactivate accserv
 
-modserv -> modserv: Command to make post visible again
+modserv -> post: Command to make post visible again
 
-note right
-	TODO: send this command
-	to the post service instead?
-end note
 
 end
 
 deactivate modserv
-
 @enduml

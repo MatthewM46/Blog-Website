@@ -5,7 +5,7 @@ participant "Automoderator" as automod
 participant "Moderation Service" as modserv
 participant "Post Service" as postserv
 participant "Notification Service" as notserv
-participant "Database" as db
+participant "Moderation Database" as db
 
 automod -> modserv: Inform of objectionable post
 activate modserv
@@ -18,21 +18,16 @@ postserv -> postserv: Hide post
 
 postserv --> modserv
 
-modserv -> modserv: Add post to mod queue
+modserv -> db: Add post to mod queue
 
 modserv -> notserv: Command to notify user
 deactivate modserv
 
 activate notserv
 
-notserv -> user: Notification of moderation action
+notserv -> user: Notification of moderation action to user who made post
 
 deactivate notserv
-
-note right
-	TODO: which user
-	is notified?
-end note
 
 deactivate postserv
 
