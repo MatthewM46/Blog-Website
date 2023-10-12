@@ -1,0 +1,226 @@
+openapi: 3.0.0
+info:
+  title: Notification Service
+  version: 1.0.0
+  description: A notification service with JWT authentication.
+
+paths:
+  /new-post:
+    post:
+      summary: Notify on new post
+      description: Endpoint to notify when a new post is created.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author_id:
+                  type: string
+              required:
+                - author_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /new-comment:
+    post:
+      summary: Notify on new comment
+      description: Endpoint to notify when a new comment is created.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commenter_id:
+                  type: string
+                post_id:
+                  type: string
+                replied_comment_id:
+                  type: string
+              required:
+                - commenter_id
+                - post_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /strike-account:
+    post:
+      summary: Notify on account strike
+      description: Endpoint to notify when an account is striked.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+              required:
+                - account_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /banned-account:
+    post:
+      summary: Notify on banned account
+      description: Endpoint to notify when an account is banned.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+              required:
+                - account_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /new-advertisement:
+    post:
+      summary: Notify on new advertisement
+      description: Endpoint to notify when a new advertisement is created for review.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ad_id:
+                  type: string
+              required:
+                - ad_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /ad-modification:
+    post:
+      summary: Notify on ad modification
+      description: Endpoint to notify when an advertisement is modified.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                modification_type:
+                  type: string
+                  enum:
+                    - "update"
+                    - "delete"
+                    - "extend"
+                ad_id:
+                  type: string
+              required:
+                - modification_type
+                - ad_id
+      tags:
+        - eventHooks
+      responses:
+        200:
+          description: Successful notification
+
+  /notification-settings:
+    post:
+      summary: Set Notification Settings
+      description: Endpoint to allow a user to configure their notification settings.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_post_followed_account:
+                  type: boolean
+                new_comment_on_my_post:
+                  type: boolean
+                new_reply_to_my_comment:
+                  type: boolean
+                new_ad_for_review:
+                  type: boolean
+                new_post_for_review:
+                  type: boolean
+                new_comment_for_review:
+                  type: boolean
+              required:
+                - new_post_followed_account
+                - new_comment_on_my_post
+                - new_reply_to_my_comment
+      tags:
+        - notificationSettings
+      responses:
+        200:
+          description: Notification settings updated successfully
+        400:
+          description: Bad Request - Malformed request or missing required fields
+        500:
+          description: Internal Server Error - Something went wrong on the server
+
+  /search-users:
+    get:
+      summary: Real-time Search
+      description: Endpoint to retrieve search results as the user types.
+      parameters:
+        - name: query
+          in: query
+          description: The partial search query entered by the user.
+          required: true
+          schema:
+            type: string
+      tags:
+        - search
+      responses:
+        200:
+          description: Successful search response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      description: The username of the user.
+                    fullname:
+                      type: string
+                      description: The full name of the user.
+                    bio:
+                      type: string
+                      description: The user's bio.
+                    avatarURL:
+                      type: string
+                      format: uri
+                      description: The URL of the user's avatar image.
+        400:
+          description: Bad Request - Missing or invalid query parameter.
+        500:
+          description: Internal Server Error - Something went wrong on the server.
+
+
+security:
+  - JWT: []
+
+components:
+  securitySchemes:
+    JWT:
+      type: apiKey
+      in: header
+      name: Authorization
