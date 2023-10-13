@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Ads/Monetization Service
+  version: 1.0.11
+servers:
+  - url: https://JAMAM.io/api
+tags:
+  - name: Ads
+    description: Ad Inter-face
+    externalDocs:
+      description: Functions
+      url: http://swagger.io
+paths:
+  /view:
+    summary: view users ads
+    description: view the advertisements of a user who is logged in
+    get:
+      summary: view the user's existing ads
+      description: A business account user views their existing ads
+      operationId: view
+      responses:
+        '200':
+          description: successfull view of ads
+          content:
+            application/json:
+              examples:
+                Ad-View:
+                  value: viewing
+      tags:
+        - Ads
+  /edit:
+    summary: edit an existing ad
+    description: The user can edit an existing ad
+    put:
+      summary: edits the user's existing ad
+      description: >-
+        The user can edit the ad by changing the image, dimensions of the image,
+        or duration of the image to be up
+      operationId: edit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                advertiser_id:
+                  type: string
+                advertiesement_id:
+                  type: string
+              required:
+                - advertiser_id
+                - advertisement_id
+      tags:
+        - Ads
+      responses:
+        '200':
+          description: Successful Edit
+          content:
+            application/json:
+              examples:
+                Edit:
+                  value: edited
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              examples:
+                Failed:
+                  value: failed request
+  /create:
+    summary: creates an ad
+    description: ad is created by the user
+    post:
+      summary: the user posts an ad
+      description: posts an advertisement to the JAMAM website
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                advertiser_id:
+                  type: string
+                advertiesement_id:
+                  type: string
+              required:
+                - advertiser_id
+                - advertisement_id
+      tags:
+        - Ads
+      responses:
+        '200':
+          description: Successful Advertisement Post
+          content:
+            application/json:
+              examples:
+                Create:
+                  value: Advertisement_Posted
+        '400':
+          description: Unseccessful Advertisement Post
+          content:
+            application/json:
+              examples:
+                Failed:
+                  value: Failed_Request
+  /delete:
+    summary: deletes an existing ad
+    description: deletes a users existing ad
+    delete:
+      summary: the user deletes an ad
+      description: a user themself deletes the ad
+      operationId: delete
+      responses:
+        '200':
+          description: successful delete
+          content:
+            application/json:
+              examples:
+                Delete:
+                  value: deleted
+        '400':
+          description: delete error
+          content:
+            application/json:
+              examples:
+                Failed:
+                  value: not_deleted
+      tags:
+        - Ads
