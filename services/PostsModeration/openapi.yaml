@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info:
+  title: Posts and Moderation API
+  version: 1.0.0
+  description: A service for creating and moderating posts and comments.
+paths:
+  /hide-post:
+    post:
+      summary: Hides a post from public view
+      description: Endpoint to hide a post.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+                hidden:
+                  type: boolean
+              required:
+              - user_id
+              - post_id
+                
+      responses:
+        '200':
+          description: Post successfully hidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Post could not be hidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    
+                    
+  /flag-post:
+    post:
+      summary: Flag a post for moderation
+      description: Endpoint to flag a post.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+                flagged:
+                  type: boolean
+              required:
+              - user_id
+              - post_id
+      responses:
+        '200':
+          description: Post flagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Post could not be flagged
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    
+                    
+                    
+  /make-post-visible:
+    post:
+      summary: Makes a post visible or invisible
+      description: Endpoint to create enable/disable post visibility.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+                visible:
+                  type: boolean
+              required:
+              - user_id
+              - post_id
+              - visible
+                
+      responses:
+        '200':
+          description: Post visibility changes made successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Unable to save visibility changes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    
+                    
+  /create-post:
+    post:
+      summary: Creates a new post
+      description: Endpoint to create a new post.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+              required:
+              - user_id
+              - post_id
+                
+      responses:
+        '200':
+          description: Post successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Unable to create new post
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    
+  /add-comment:
+    post:
+      summary: Creates a new comment on a post
+      description: Endpoint to create a comment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+                comment_id:
+                  type: string
+                reply:
+                  type: boolean
+              required:
+              - user_id
+              - post_id
+              - comment_id
+                
+      responses:
+        '200':
+          description: Comment successfully added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Unable to add comment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    
+  
+  /get-posts:
+    post:
+      summary: Allows user to view posts.
+      description: Endpoint to get posts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_id:
+                  type: string
+                user_id:
+                  type: string
+              required:
+              - user_id
+              - post_id
+                
+      responses:
+        '200':
+          description: Successfully gets posts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  post_id:
+                    type: integer
+        '400':
+          description: Unable to get posts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
