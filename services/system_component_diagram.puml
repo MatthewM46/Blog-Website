@@ -1,0 +1,58 @@
+@startuml
+component "Account/Notifications" {
+  [Account] as acc
+  [Notifications] as not
+  port AN
+  acc->AN
+  not->AN
+}
+
+component "Posting/Moderating" {
+  [Posting] as pos
+  [Moderating] as mod
+  port PM
+  pos->PM
+  mod->PM
+}
+
+[Advertisment Service] as ad
+
+component comp1 [
+<<interface>>
+<<Notify/Post>>
+<<Notify/Mod>>
+<<Acc/Post>>
+<<Acc/Mod>>
+]
+
+component comp2 [
+<<interface>>
+<<Notify/Ads>>
+<<Acc/Ads>>
+]
+
+component comp3  [
+<<interface>>
+<<Post/Ads>>
+<<Mod/Ads>>
+]
+
+() " " as anpm
+() " " as ana
+() " " as pma
+
+AN-up->anpm
+AN-up->ana
+
+PM-right->anpm
+PM-up->pma
+
+ad-left-->ana
+ad-->pma
+
+anpm ...>comp1
+ana .left.>comp2
+pma .right.>comp3
+
+}
+@enduml
