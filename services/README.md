@@ -35,6 +35,8 @@ The members of our group will work on the following services:
 
 ## Component and Connector Diagram
 
+![component-connector-diagram](component_diagram.png)
+
 ==⚠️ TODO: Please add a component and connector diagram. This can be accomplished by creating a .puml file
 in a diagrams directory, writing it there, and then running Make to generate the diagram. Then,
 link it here with the `![]()` syntax. See usecase readmes for examples.==
