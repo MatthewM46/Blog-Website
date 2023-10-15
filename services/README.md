@@ -37,6 +37,8 @@ The members of our group will work on the following services:
 
 ![component-connector-diagram](component_diagram.png)
 
+The Account and Notifications microservice is being built Springboot and JWT for authentication. The other microservices will need to authenticate the user through the Accounts component using the JWT issued to every user on log in. The notifications microservice will be connecting to all the other services to set up notifications to be sent to users. There will be a encrypted database of users account information that only Accounts will have access to read and write to. 
+
 ==⚠️ TODO: Please add a component and connector diagram. This can be accomplished by creating a .puml file
 in a diagrams directory, writing it there, and then running Make to generate the diagram. Then,
 link it here with the `![]()` syntax. See usecase readmes for examples.==
