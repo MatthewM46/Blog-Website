@@ -44,9 +44,8 @@ link it here with the `![]()` syntax. See usecase readmes for examples.==
 ## Deployment Diagram
 ![deployment-diagram](https://github.com/uvic-teach/project-m1-team3/assets/145606087/3b8cfa92-0b98-4569-899b-1959c6409b19)
 
-==⚠️ TODO: Please add a deployment diagram. This can be accomplished by creating a .puml file
-in a diagrams directory, writing it there, and then running Make to generate the diagram. Then,
-link it here with the `![]()` syntax. See usecase readmes for examples.==
+We are deploying to AWS Lightsail. Each microservice will be in a dockercontainer, and communicates with each other via a bridge network. We will have a central PostgreSQL database running in a container which services all microservices. The Accounts/Notification Service will be written in java with Spring Boot. The Posts/Moderation Service will be written in java with Spring Boot. The Ads Service will be written in java with Spring Boot. The frontend will be written with SvelteKit and deployed with Node.js.
+
 
 ## Services
 
