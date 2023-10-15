@@ -254,3 +254,114 @@ paths:
                   error:
                     type: string
 
+  /moderation/queue:
+    get:
+      summary: Get a post for review
+      description: Endpoint for a moderator to get a post from the moderation queue.
+      responses:
+        '200':
+          description: Post retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  postId:
+                    type: string
+                  content:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      security:
+        - JWTAuth: []
+
+  /posts/{postId}/review:
+    post:
+      summary: Review a post
+      description: Endpoint for a moderator to review a post.
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          description: ID of the post to be reviewed
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                decision:
+                  type: string
+                  enum: [approve, reject]
+                moderatorId:
+                  type: string
+      responses:
+        '200':
+          description: Post reviewed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      security:
+        - JWTAuth: []
+
+  /users/{userId}/incrementRemovedPost:
+    post:
+      summary: Increment removed post count
+      description: Endpoint to increment the count of removed posts for a user.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: ID of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Post count incremented successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  removedPostCount:
+                    type: number
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      security:
+        - JWTAuth: []
+
+
