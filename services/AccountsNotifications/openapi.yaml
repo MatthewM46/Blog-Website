@@ -214,6 +214,275 @@ paths:
         500:
           description: Internal Server Error - Something went wrong on the server.
 
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create user
+      description: user creates account
+      operationId: createUser
+      parameters:
+        - name: Email
+          in: query
+          description: users email
+          required: true
+          schema:
+            type: string
+            
+        - name: First Name
+          in: query
+          description: first name of user
+          required: true
+          schema:
+            type: string
+            
+        - name: Last Name
+          in: query
+          description: The last name of user
+          required: true
+          schema:
+            type: string
+
+        - name: Password
+          in: query
+          description: users created password
+          required: true
+          schema:
+            type: string
+
+        - name: Password Again
+          in: query
+          description: Must match the above password
+          required: true
+          schema:
+            type: string
+      responses:
+        201:
+          description: successful user created
+        
+        400:
+          description: passwords do not match each other
+          
+        412:
+          description: field left empty
+        
+        409:
+          description: email already in use, user not created
+          
+  /user/inputUserDB:
+    post:
+      tags:
+        - user
+      summary: inputs user into user DB
+      description: updates DB of users with new given input arrays
+      operationId: inputUserDB
+      requestBody:
+        description: inputs user object
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  user_id:
+                    type: string
+                  user_email:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  user_password:
+                    type: string
+      responses:
+        200:
+          description: successful user added to DB
+        400:
+          description: user not added to DB
+          
+  /user/login:
+    get:
+      tags:
+        - user
+      summary: Logs a registered user into the system
+      description: user enters email and password to login to the system
+      parameters:
+        - name: email
+          in: query
+          description: the registered email of user
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: the users password
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful user login, JWT returned
+          headers:
+            X-Expires-After:
+              description: date in UTC when JWT expires or JWT does not match
+              schema:
+                type: string
+                format: date-time
+        400:
+          description: invalid email or password
+          
+  /user/login/authentication:
+    post:
+      tags:
+        - user
+      summary: JWT created
+      description: user is assigned a JWT on log in
+
+      responses:
+        200:
+          description: JWT created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  JWT:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        header_alg: 
+                          type: string
+                          example: HS246
+                        header_typ: 
+                          type: string
+                          example: JWT
+                        payload_iss:
+                          type: string
+                          example: authenitcation server
+                        payload_sub:
+                          type: string
+                          example: 1234567890
+                        payload_name:
+                          type: string
+                          example: John Doe
+                        payload_iat:
+                          type: string
+                          example: 1516239022
+                        payload_exp:
+                          type: string
+                          example: 1516240055
+                        signature:
+                          type: string
+                          example: HMACSHA256(
+                                  base64UrlEncode(header) + "." +
+                                  base64UrlEncode(payload),
+                                  secret)
+
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current user
+      description: current user logs out of system
+      responses:
+        200:
+          description: successful operation, JWT destroyed
+          
+  /user/update:
+    put:
+      tags:
+        - user
+      summary: update user info
+      description: logged in user updates his account information
+      parameters:
+        - name: Email
+          in: query
+          description: users email
+          required: false
+          schema:
+            type: string
+            
+        - name: First Name
+          in: query
+          description: first name of user
+          required: false
+          schema:
+            type: string
+            
+        - name: Last Name
+          in: query
+          description: The last name of user
+          required: false
+          schema:
+            type: string
+
+        - name: Password
+          in: query
+          description: users created password
+          required: false
+          schema:
+            type: string
+
+        - name: Password Again
+          in: query
+          description: Must match the above password
+          required: false
+          schema:
+            type: string
+            
+      responses:
+        200: 
+          description: user updates information
+        400:
+          description: invalid field
+        
+  /user/delete:
+    delete:
+      tags:
+      - user
+      summary: Delete user
+      description: user deleted account, must be logged in
+      parameters:
+        - name: Email
+          in: query
+          description: users email
+          required: true
+          schema:
+            type: string
+        
+        - name: password
+          in: query
+          description: users password
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: user deleted
+        400:
+          description: invalid email or password
+          
+  /user/forogtpassword:
+    post:
+      tags:
+        - user
+      summary: reset password
+      description: user forgot password and wants to reset it
+      parameters:
+        - name: Email
+          in: query
+          description: users email
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: user reset password email sent
+        400:
+          description: invalid email
+
 
 security:
   - JWT: []
