@@ -41,13 +41,11 @@ The Account and Notifications microservice is being built Springboot and JWT for
 
 The Ads microservice is being built with Springboot. The Ads microservice will need the Accounts component to authenticate the user using the JWT. The Ads microservice will also need the notification service to send notifications to the advertisement user about their advertisements being created, deleted, or edited.
 
-==⚠️ TODO: Please add a component and connector diagram. This can be accomplished by creating a .puml file
-in a diagrams directory, writing it there, and then running Make to generate the diagram. Then,
-link it here with the `![]()` syntax. See usecase readmes for examples.==
+The Posts and Moderation microservice is being built with Springboot. This microservice will require the Accounts service to assign posts and comments to their respective Users, as well as to assign the status of an Account based on moderation. This microservice will also require the Notification service to send notifications to Users on new posts, comments, or replies.
+
 
 ## Deployment Diagram
 ![deployment-diagram](https://github.com/uvic-teach/project-m1-team3/assets/145606087/1e3564bb-f042-43a1-b5d3-e15d0ec70410)
-
 
 We are deploying to AWS Lightsail. Each microservice will be in a dockercontainer, and communicates with each other via a bridge network. We will have a central PostgreSQL database running in a container which services all microservices. The Accounts/Notification Service will be written in java with Spring Boot. The Posts/Moderation Service will be written in java with Spring Boot. The Ads Service will be written in java with Spring Boot. The frontend will be written with SvelteKit and deployed with Node.js.
 
