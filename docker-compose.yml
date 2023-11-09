@@ -1,0 +1,12 @@
+version: '3'
+services:
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        environment:
+            ORIGIN: http://localhost:3000
+            ACCOUNT_SERVICE_URL: http://accountservice:8080
+        init: true
+        ports:
+            - "3000:3000"

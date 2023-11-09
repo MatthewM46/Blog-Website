@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/private';
 
 export const actions = {
 	register: async ({ cookies, request }) => {
@@ -14,7 +15,7 @@ export const actions = {
 		console.log(registerRequestBody);
 
 		const registerResponse = await fetch(
-			"http://localhost:8080/api/v1/auth/register",
+			`${ env.ACCOUNT_SERVICE_URL }/api/v1/auth/register`,
 			{
 				method: "POST",
 				headers: {
