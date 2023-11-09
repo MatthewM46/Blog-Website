@@ -1,13 +1,19 @@
-export function load({ cookies }) {
-	let loggedIn = cookies.get('loggedIn');
+import { jwtDecode } from "jwt-decode";
 
-	if (loggedIn === undefined || loggedIn === '') {
-		loggedIn = false;
-	} else {
+export function load({ cookies }) {
+
+	let token = cookies.get('token');
+	let loggedIn = false;
+	let username = "";
+
+	if (token) {
+		const decoded = jwtDecode(token);
+		username = decoded.sub;
 		loggedIn = true;
 	}
 
 	return {
-		loggedIn
+		loggedIn,
+		username
 	}
 }

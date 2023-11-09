@@ -1,26 +1,38 @@
+import { env } from '$env/dynamic/private';
 import {error, redirect} from '@sveltejs/kit';
 
 export const actions = {
 	login: async ({ cookies, request }) => {
-		const loggedIn = cookies.get('loggedIn');
 
-		// if loggedIn cookie does not exist, set it
-		if (loggedIn === undefined || loggedIn === '') {
-			cookies.set('loggedIn', 'true', { path: '/'});
+		const formData = await request.formData();
+
+		const authenticateRequestBody = {
+			username: formData.get('username'),
+			password: formData.get('password')
+		};
+
+		const authenticateResponse = await fetch(
+			`${ env.ACCOUNT_SERVICE_URL }/api/v1/auth/authenticate`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(authenticateRequestBody)
+			}
+		);
+
+		if (authenticateResponse.ok) {
+			const json = await authenticateResponse.json();
+			cookies.set('token', json.token, { path: '/' });
 			throw redirect(303, '/');
 		} else {
-			throw error(420, 'Enhance your calm');
+			throw new Error("Kaboom!");
 		}
+
 	},
 	logout: async ({ cookies, request }) => {
-		const loggedIn = cookies.get('loggedIn');
-
-		// if loggedIn cookie exists, delete it
-		if (loggedIn === 'true') {
-			cookies.set('loggedIn', '', { path: '/' });
-		} else {
-			throw error(500, 'Enhance your calm');
-		}
+		cookies.delete('token');
 
 		return {
 			loggedOut: true

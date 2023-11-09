@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/private';
+import {redirect} from "@sveltejs/kit";
 
 export const actions = {
 	register: async ({ cookies, request }) => {
@@ -25,6 +26,12 @@ export const actions = {
 			}
 		);
 
-		console.log(registerResponse);
+		if (registerResponse.ok) {
+			const json = await registerResponse.json();
+			cookies.set('token', json.token, { path: '/' });
+			throw redirect(303, '/');
+		} else {
+			throw new Error("Kaboom!");
+		}
 	}
 }
