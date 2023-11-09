@@ -1,5 +1,26 @@
 version: '3'
 services:
+    postgres:
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: username
+            POSTGRES_PASSWORD: password
+        volumes:
+            - ./postgres_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+    accountservice:
+        build:
+            context: ./account_service
+            dockerfile: Dockerfile
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/
+            SPRING_DATASOURCE_USERNAME: username
+            SPRING_DATASOURCE_PASSWORD: password
+        ports:
+            - "8080:8080"
+        depends_on:
+            - postgres
     frontend:
         build:
             context: ./frontend
