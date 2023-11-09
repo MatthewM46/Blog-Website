@@ -19,3 +19,7 @@
 
 	<input class="mt-2 mr-0 p-3 rounded hover:bg-slate-600 text-slate-50 bg-slate-500" type="submit" value="Login" />
 </form>
+
+<div class="max-w-md mx-auto mt-3">
+	or <a href="/register">register</a>
+</div>
