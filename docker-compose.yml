@@ -9,6 +9,11 @@ services:
             - ./postgres_data:/var/lib/postgresql/data
         ports:
             - "5432:5432"
+        healthcheck:
+            test: "pg_isready -d postgres -U username"
+            interval: 2s
+            timeout: 20s
+            retries: 10
     accountservice:
         build:
             context: ./account_service
@@ -20,7 +25,8 @@ services:
         ports:
             - "8080:8080"
         depends_on:
-            - postgres
+            postgres:
+                condition: service_healthy
     frontend:
         build:
             context: ./frontend
