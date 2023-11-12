@@ -11,9 +11,9 @@ patterns.
 ## Milestone 3 Sprint
 | Goals                            | Description                                                                                                 | Status   |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------|----------|
-| The basic layout for Posting     | Complete code for posting including objects, data handling, and methodology. Leave error testing and handling for milestone 4. | Complete |
-| The basic layout for Moderation  | Complete code for moderation including objects, data handling, and methodology. Leave error testing and handling for milestone 4. | Complete |
-| The basic layout for Repositories| Complete code for repositories including objects, data handling, and methodology. Leave error testing and handling for milestone 4. | Complete |
+| The basic layout for Posting     | Complete code for posting including objects, data handling, and methodology. The code is functional with some problems. Leave error testing and handling for milestone 4. | Complete |
+| The basic layout for Moderation  | Complete code for moderation including objects, data handling, and methodology. The code is functional with some problems. Leave error testing and handling for milestone 4. | Complete |
+| The basic layout for Repositories| Complete code for repositories including objects, data handling, and methodology. The code is functional with some problems. Leave error testing and handling for milestone 4. | Complete |
 
 ## Milestone 4 Sprint
 | Goals                                 | Description                                             | Status  |
