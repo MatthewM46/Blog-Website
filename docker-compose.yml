@@ -27,6 +27,19 @@ services:
         depends_on:
             postgres:
                 condition: service_healthy
+    adservice:
+        build:
+            context: ./ads_service
+            dockerfile: Dockerfile
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/
+            SPRING_DATASOURCE_USERNAME: username
+            SPRING_DATASOURCE_PASSWORD: password
+        ports:
+            - "8081:8080"
+        depends_on:
+            postgres:
+                condition: service_healthy
     frontend:
         build:
             context: ./frontend
