@@ -13,8 +13,6 @@ export const actions = {
 			password: formData.get('password')
 		};
 
-		console.log(registerRequestBody);
-
 		const registerResponse = await fetch(
 			`${ env.ACCOUNT_SERVICE_URL }/api/v1/auth/register`,
 			{

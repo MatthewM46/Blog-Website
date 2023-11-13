@@ -27,7 +27,10 @@ export const actions = {
 			cookies.set('token', json.token, { path: '/' });
 			throw redirect(303, '/');
 		} else {
-			throw new Error("Kaboom!");
+			return {
+				loggedOut: false,
+				badLogin: true
+			}
 		}
 
 	},
@@ -35,7 +38,8 @@ export const actions = {
 		cookies.delete('token');
 
 		return {
-			loggedOut: true
+			loggedOut: true,
+			badLogin: false
 		};
 	}
 }
