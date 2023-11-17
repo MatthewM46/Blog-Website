@@ -10,7 +10,7 @@
 			<a href="/login"><button class="p-2 px-4 rounded-xl bg-slate-500 hover:bg-slate-600 text-slate-50">Login</button></a>
 		{:else}
 			<form method="POST" action="/login?/logout">
-				Welcome back, {data.username}. <input class="underline text-slate-500 hover:text-slate-700" value="Logout" type="submit" name="logout" />
+				Welcome back, {data.username}. <input class="underline text-slate-600 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-600" value="Logout" type="submit" name="logout" />
 			</form>
 		{/if}
 	</div>
